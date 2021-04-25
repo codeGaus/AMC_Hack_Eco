@@ -3,6 +3,7 @@ from Model import RegistrationForm, RequestForm
 from ManageLocation import Location
 from SQLiter import SQLighter
 
+
 app = FastAPI()
 
 
@@ -25,11 +26,13 @@ def user_request(request_form: RequestForm):
     db_worker.close()
     return request_id
 
+
 @app.get('/range')
 def get_range():
     db_worker = SQLighter("Maindatabase.db")
     request_id = db_worker.get_range()
     return request_id
+
 
 @app.get('/check_loc')
 def get_check_loc(location1: str, location2: str):
